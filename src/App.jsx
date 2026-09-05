@@ -17,7 +17,7 @@ import Container from './components/Container.jsx';
 import useCart from './hooks/useCart.js';
 import { products } from './data/products.js';
 
-const categories = ['all', ...new Set(products.map((product) => product.category))];
+const categories = ['all', ...new Set(products.map((product) => product.category.toLowerCase()))];
 
 export default function App() {
   const {
@@ -42,12 +42,13 @@ export default function App() {
   const filteredProducts = useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
     return products.filter((product) => {
-      const categoryMatch = activeFilter === 'all' || product.category === activeFilter;
+      const cat = product.category.toLowerCase();
+      const categoryMatch = activeFilter === 'all' || cat === activeFilter;
       const textMatch =
         !query ||
         product.title.toLowerCase().includes(query) ||
         product.tag.toLowerCase().includes(query) ||
-        product.category.includes(query);
+        cat.includes(query);
       return categoryMatch && textMatch;
     });
   }, [activeFilter, searchQuery]);

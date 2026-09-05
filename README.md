@@ -2,8 +2,8 @@
 
 ZENJI is a client-side e-commerce storefront for a cyberpunk Neo-Tokyo streetwear brand, built with **React 19**, **Vite 6**, and **Tailwind CSS v4**. It ships a modular, 100% comment-free React component architecture with dedicated cart state management, live drop countdowns, and a neon design system of acid green over deep charcoal.
 
-[![Live Demo](https://your-demo-link.vercel.app)](https://your-demo-link.vercel.app)
-[![GitHub Repository](https://github.com/your-username/zenji)](https://github.com/your-username/zenji)
+[![Live Demo](https://zenji-website-v9it.vercel.app)]
+[![GitHub Repository]https://github.com/Monoaratasnim/ZENJI-website]
 
 ---
 
@@ -105,6 +105,6 @@ Open `http://localhost:5173` in your browser — Vite provides hot module replac
 ### Production Build
 
 ```bash
-npm run build    # Outputs an optimized bundle to /dist
-npm run preview  # Serves the production build locally
+npm run build    
+npm run preview 
 ```

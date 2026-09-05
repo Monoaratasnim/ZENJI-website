@@ -11,7 +11,7 @@ export default function ProductCard({ product, index = 0, onAddToCart }) {
       style={{ transitionDelay: `${index * 80}ms` }}
     >
       <div className="relative overflow-hidden rounded-xl">
-        <img src={product.image} alt={product.title} loading="lazy" className="w-full aspect-[3/4] object-cover product-img-zoom" />
+        <img src={product.image} alt={product.title} loading="lazy" className="w-full h-72 object-cover object-center rounded-lg product-img-zoom" />
         {product.soldOut ? (
           <div className="absolute inset-0 bg-charcoal/60 backdrop-blur-[2px] grid place-items-center">
             <span className="badge-crimson rotate-[-6deg] scale-110">SOLD OUT</span>
