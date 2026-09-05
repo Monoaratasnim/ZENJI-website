@@ -1,9 +1,9 @@
-# ZENJI // Cyberpunk Streetwear Storefront
+# ZENJI // Anime-Inspired Streetwear Storefront
 
-ZENJI is a fully client-side e-commerce storefront for an anime-inspired Neo-Tokyo streetwear brand, engineered with **React 19**, **Vite**, and **Tailwind CSS v4**. The project demonstrates production-grade React architecture, dedicated state management via custom hooks, and a dark cyberpunk design system — neon acid green and cyber crimson over deep charcoal — wrapped in a 100% comment-free, responsive component library.
+ZENJI is a client-side e-commerce storefront for a cyberpunk Neo-Tokyo streetwear brand, built with **React 19**, **Vite 6**, and **Tailwind CSS v4**. It ships a modular, 100% comment-free React component architecture with dedicated cart state management, live drop countdowns, and a neon design system of acid green over deep charcoal.
 
 [![Live Demo](https://your-demo-link.vercel.app)](https://your-demo-link.vercel.app)
-[![Repository](https://github.com/your-username/zenji)](https://github.com/your-username/zenji)
+[![GitHub Repository](https://github.com/your-username/zenji)](https://github.com/your-username/zenji)
 
 ---
 
@@ -19,94 +19,74 @@ ZENJI is a fully client-side e-commerce storefront for an anime-inspired Neo-Tok
 
 ## Key Features
 
-- **Modular Component Architecture** — Every UI surface is isolated into a single-purpose component: `Navbar`, `Hero`, `Marquee` (ticker strip), `Drops`, `ProductGrid`, `ProductCard`, `CartDrawer`, `CheckoutModal`, `FilterTabs`, `Lookbook`, and more. Components accept explicitly typed props via `PropTypes` and compose through shared primitives such as `Container` and `Reveal`.
-
-- **Dynamic Product Search & Categorization** — The catalog filters instantly in real time as the user types into the navigation search bar, while interactive category tabs (`All`, `Hoodies`, `Tees`, `Pants`, `Accessories`) drive a memoized grid with combined category + keyword matching.
-
-- **Dedicated Release Sections** — Distinct release targets separate limited releases from the full catalog:
-  - `#drops` — exclusive limited-edition drops with a live countdown timer (`useCountdown`), urgency banner, and limited-stock badges (`ONLY 50 PIECES MADE`).
-  - `#collections` — the complete product catalog with category filtering and real-time search.
-
-- **Real-Time Shopping Cart & State Syncing** — The cart is managed entirely by a dedicated `useCart` hook: repeated Quick Adds merge quantities, `+/−` controls and item removal recompute subtotals and the navbar badge live, and a deterministic `clearCart()` empties the cart the moment a purchase completes — regardless of how the confirmation screen is dismissed.
-
-- **Fully Responsive Architecture** — Fluid type scaling (`text-3xl` → `xl:text-7xl`), edge-aware padding (`px-4 sm:px-6 lg:px-8`), targeted image framing (`object-cover object-top` prevents head-cropping), and responsive grids adapt from 320px mobile through 4-column desktop layouts with 44px+ touch targets throughout.
+- **Interactive Navigation** — Smooth-scrolling anchor navigation routes to dedicated release targets: `#drops` for limited-edition releases backed by a live countdown timer, and `#collections` for the full browsable catalog.
+- **Dynamic Filtering & Search** — Instant keyword search over product titles, tags, and categories combines with real-time category tab filtering (`All`, `Hoodies`, `Tees`, `Pants`, `Accessories`) through memoized derived state.
+- **Shopping Cart State** — A dedicated `useCart` hook powers quantity `+/−` controls, live subtotal recalculation, navbar badge syncing, and an automatic cart reset via `clearCart()` the moment checkout completes.
+- **Responsive UI** — Adaptive grid layouts, fluid headline typography (`text-3xl` → `xl:text-7xl`), and tailored hero framing (`object-cover object-top`) scale cleanly across mobile, tablet, and desktop breakpoints with 44px+ touch targets.
 
 ---
 
-## Technical Stack & Architecture
+## Technical Stack
 
-| Layer          | Technology                                                       |
-| -------------- | ---------------------------------------------------------------- |
-| **Framework**  | React 19 (functional components, hooks, `PropTypes`)            |
-| **Build Tool** | Vite 6 (`@vitejs/plugin-react`, ESBuild fast refresh)           |
-| **Styling**    | Tailwind CSS v4 (`@theme` tokens + custom CSS design system)     |
-| **State**      | Custom hooks (`useCart`, `useCountdown`, `useReveal`)           |
-| **Icons**      | Hand-authored inline SVG icon set (stroke-based, Lucide style — zero external icon dependencies) |
-| **Deployment** | Static build (`vite build`) — optimized for Vercel               |
+| Layer          | Technology                                                                     |
+| -------------- | ------------------------------------------------------------------------------ |
+| **Framework**  | React 19 (functional components, hooks, `PropTypes`)                           |
+| **Build Tool** | Vite 6 (`@vitejs/plugin-react`)                                                |
+| **Styling**    | Tailwind CSS v4 (`@theme` design tokens + custom CSS)                          |
+| **Icons**      | Lucide-style inline SVG icon set — hand-authored in-component, zero external icon dependencies |
+| **Deployment** | Vercel / Netlify (static output from `vite build`)                             |
 
-### Project Structure
+---
+
+## Project Architecture
 
 ```text
 zenji/
 ├── public/
 │   ├── Outlook-ZENJI.png
 │   └── Outlook-ZENJI mono.png
-├── src/
-│   ├── components/
-│   │   ├── Navbar.jsx
-│   │   ├── Hero.jsx
-│   │   ├── Marquee.jsx
-│   │   ├── Drops.jsx
-│   │   ├── CountdownTimer.jsx
-│   │   ├── FilterTabs.jsx
-│   │   ├── ProductGrid.jsx
-│   │   ├── ProductCard.jsx
-│   │   ├── Lookbook.jsx
-│   │   ├── About.jsx
-│   │   ├── Footer.jsx
-│   │   ├── CartDrawer.jsx
-│   │   ├── CheckoutModal.jsx
-│   │   ├── Toast.jsx
-│   │   ├── ToTop.jsx
-│   │   ├── Reveal.jsx
-│   │   └── Container.jsx
-│   ├── hooks/
-│   │   ├── useCart.js
-│   │   ├── useCountdown.js
-│   │   └── useReveal.js
-│   ├── data/
-│   │   ├── products.js
-│   │   ├── drops.js
-│   │   └── looks.js
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── styles.css
-├── index.html
-├── vite.config.js
-└── package.json
+└── src/
+    ├── components/
+    │   ├── Navbar.jsx         # Navigation, search, cart badge, mobile menu
+    │   ├── Hero.jsx           # Above-the-fold editorial hero
+    │   ├── Marquee.jsx        # Brand ticker strip
+    │   ├── Drops.jsx          # #drops — limited releases + countdown
+    │   ├── CountdownTimer.jsx # Live drop countdown UI
+    │   ├── FilterTabs.jsx     # Category tab filters
+    │   ├── ProductGrid.jsx    # Responsive product grid
+    │   ├── ProductCard.jsx    # Single product card with Quick Add
+    │   ├── Lookbook.jsx       # Editorial look reel
+    │   ├── About.jsx          # Brand manifesto
+    │   ├── Footer.jsx
+    │   ├── CartDrawer.jsx     # Slide-out cart with qty controls
+    │   ├── CheckoutModal.jsx  # Checkout flow + order confirmation
+    │   ├── Toast.jsx
+    │   ├── ToTop.jsx
+    │   ├── Reveal.jsx         # Scroll-reveal wrapper
+    │   └── Container.jsx      # Centered max-width layout primitive
+    ├── hooks/
+    │   ├── useCart.js         # Cart state: add/remove/qty/clear + subtotal
+    │   ├── useCountdown.js    # Countdown ticker logic
+    │   └── useReveal.js       # IntersectionObserver scroll reveal
+    ├── data/
+    │   ├── products.js        # Full catalog seed data
+    │   ├── drops.js           # Limited-releases seed data
+    │   └── looks.js           # Lookbook editorial seed data
+    ├── App.jsx                # Root composition + global state orchestration
+    ├── main.jsx               # React entry point
+    └── styles.css             # Tailwind entry + design tokens
 ```
-
-### Design System
-
-| Token         | Value      | Usage                              |
-| ------------- | ---------- | ---------------------------------- |
-| `--charcoal` | `#0F0F12`  | Primary dark background            |
-| `--acid`     | `#CCFF00`  | Neon accent, CTAs, active states   |
-| `--crimson`  | `#FF2A5F`  | Alerts, sold-out/limited urgency   |
-| `--ink`      | `#F4F4F6`  | Foreground text & icons            |
-
-Tokens are declared once as CSS variables and mirrored into Tailwind's `@theme` namespace for consistent, single-source-of-truth theming.
 
 ---
 
-## Getting Started
+## Local Setup & Installation
 
 ### Prerequisites
 
 - Node.js 20.x or later
 - npm 10.x or later
 
-### Local Setup
+### Install & Run
 
 ```bash
 # 1. Clone the repository
@@ -116,34 +96,15 @@ cd zenji
 # 2. Install dependencies
 npm install
 
-# 3. Start the development server
+# 3. Start the local development server
 npm run dev
 ```
 
-Open `http://localhost:5173` — Vite serves the app with hot module replacement.
+Open `http://localhost:5173` in your browser — Vite provides hot module replacement for instant feedback during development.
 
 ### Production Build
 
 ```bash
-# Generate an optimized production bundle in /dist
-npm run build
-
-# Preview the production build locally
-npm run preview
+npm run build    # Outputs an optimized bundle to /dist
+npm run preview  # Serves the production build locally
 ```
-
----
-
-## Code Quality & Standards
-
-- **Manually authored, comment-free** — Every file is written by hand with zero `//` or `/* */` comments; intent is expressed through naming, structure, and self-documenting code.
-- **Reusable component contracts** — Props are validated with `PropTypes`; presentational components stay pure and receive data via props, keeping concerns separated from business logic.
-- **Clean state handling** — Cart, countdown, and scroll-reveal logic live in isolated custom hooks, keeping `App.jsx` declarative and side-effect free.
-- **Modern ES6+ idioms** — Functional components, hooks, destructuring, `useCallback`/`useMemo`, optional chaining, and template-safe class composition.
-- **Accessibility & UX fundamentals** — Semantic landmarks, `aria-label` on icon-only controls, `scroll-mt` anchor offsets for the fixed header, and minimum 44px touch targets.
-
----
-
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
