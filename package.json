@@ -1,0 +1,23 @@
+{
+  "name": "zenji",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ZENJI — Anime culture × streetwear landing page built with Vite + Tailwind CSS v4.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "@vitejs/plugin-react": "^4.7.0",
+    "tailwindcss": "^4.1.11",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "prop-types": "^15.8.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  }
+}
