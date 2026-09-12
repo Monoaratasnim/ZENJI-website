@@ -1,6 +1,6 @@
 # ZENJI // Anime-Inspired Streetwear Storefront
 
-ZENJI is a client-side e-commerce storefront for a cyberpunk Neo-Tokyo streetwear brand, built with **React 19**, **Vite 6**, and **Tailwind CSS v4**. It ships a modular, 100% comment-free React component architecture with dedicated cart state management, live drop countdowns, and a neon design system of acid green over deep charcoal.
+ZENJI is a modern frontend e-commerce storefront created for an anime-inspired streetwear brand, built with **React 19**, **Vite 6** and **Tailwind CSS v4**. It combines a bold, immersive visual identity with a responsive component-based architecture, interactive product search and filtering, dynamic cart management, live drop countdowns and a seamless shopping experience across desktop and mobile.
 
 **Live Demo:** [zenji-website-v9it.vercel.app](https://zenji-website-v9it.vercel.app)  
 **GitHub Repository:** [github.com/Monoaratasnim/ZENJI-website](https://github.com/Monoaratasnim/ZENJI-website)
